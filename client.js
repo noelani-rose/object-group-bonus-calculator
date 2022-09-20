@@ -52,7 +52,7 @@ for(let em of employees){
 //
 function calculateIndividualEmployeeBonus( employee ) {  
   // your logic here
-  let percentages = 0;
+  let employeeLength = employee.employeeNumber.length;
   let employeeBonus = {
     name: employee.name,
     // bonusPercentage: 0, 
@@ -76,8 +76,8 @@ function calculateIndividualEmployeeBonus( employee ) {
     else{
       employeeBonus.bonusPercentage=1.10;
     };
-      if (employee.employeeNumber < 10000 ){
-        employee.employeeBonus = employee.employeeBonus += .05;
+      if (employeeLength < 5 ){
+        employeeBonus.bonusPercentage += .05;
       }
   // else{
   //   if (employee.reviewRating <= 2){
@@ -107,7 +107,8 @@ function calculateIndividualEmployeeBonus( employee ) {
   //create total bonus
   employeeBonus.totalBonus=Math.ceil((employee.annualSalary * employeeBonus.bonusPercentage) - employee.annualSalary);
   // return new object with bonus results
-  
+  console.log(employeeLength);
+
   return employeeBonus;
 }
 console.log(calculateIndividualEmployeeBonus(employees[0]));
@@ -115,6 +116,7 @@ console.log(calculateIndividualEmployeeBonus(employees[1]));
 console.log(calculateIndividualEmployeeBonus(employees[2]));
 console.log(calculateIndividualEmployeeBonus(employees[3]));
 console.log(calculateIndividualEmployeeBonus(employees[4]));
+
 
 
 
