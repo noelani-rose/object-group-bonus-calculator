@@ -43,24 +43,13 @@ console.log('array of employee data: ',  employees );
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-for(let em of employees){
-  console.log(em);
-}
-
 
 // This function will calculate 1 employee's bonus!
 //
-function calculateIndividualEmployeeBonus( employee ) {  
+function calculateIndividualEmployeeBonus(employee) {  
   // your logic here
-  // let employeeLength = employee.employeeNumber.length;
   let employeeBonus = {
     name: employee.name,
-    // bonusPercentage: 0, 
-    // // percentages,
-    // totalCompensation: 0,
-    // // employee.annualSalary * employee.bonusPercentage,
-    // totalBonus: 0,
-    // // Math.ceil(totalCompensation - employee.annualSalary)
   };
   
   // Start of bonusPercentage if
@@ -70,55 +59,45 @@ function calculateIndividualEmployeeBonus( employee ) {
   else if (employee.reviewRating === 3){
     employeeBonus.bonusPercentage = 1.04;
   }
-  else if(employee.reviewRating===4){
+  else if (employee.reviewRating === 4){
     employeeBonus.bonusPercentage=1.06;
   }
   else{
     employeeBonus.bonusPercentage=1.1;
   };
   
-  if (employee.employeeNumber<10000 ){
+  if (employee.employeeNumber < 10000 ){
     employeeBonus.bonusPercentage += .05;
   };
   
-  if(employee.annualSalary>65000 && employeeBonus.bonusPercentage>1){
+  if (employee.annualSalary>65000 && employeeBonus.bonusPercentage>1){
     employeeBonus.bonusPercentage=employeeBonus.bonusPercentage-=.01
   };
   
-  if(employeeBonus.bonusPercentage>1.13){
-    employeeBonus.bonusPercentage=1.13
+  if (employeeBonus.bonusPercentage > 1.13){
+    employeeBonus.bonusPercentage = 1.13
   }
   
   //end of the bonusPercentage if
   
   //create total compensation attribute
   
-  employeeBonus.totalCompesation=employee.annualSalary * employeeBonus.bonusPercentage;
+  employeeBonus.totalCompesation = Math.round(employee.annualSalary * employeeBonus.bonusPercentage);
   
   
   // total compensation attribute created
   //create total bonus
   
-  employeeBonus.totalBonus=Math.ceil((employee.annualSalary * employeeBonus.bonusPercentage) - employee.annualSalary);
+  employeeBonus.totalBonus = Math.ceil((employee.annualSalary * employeeBonus.bonusPercentage) - employee.annualSalary);
   
   // return new object with bonus results
-  // console.log(employeeLength);
-  // employeeBonus.bonusPercentage=employeeBonus.bonusPercentage-1;
   
-  employeeBonus.bonusPercentage=String(employeeBonus.bonusPercentage).slice(-1);
-  employeeBonus.bonusPercentage=employeeBonus.bonusPercentage+'%';
+  employeeBonus.bonusPercentage = String(employeeBonus.bonusPercentage).slice(-1);
+  employeeBonus.bonusPercentage = employeeBonus.bonusPercentage+'%';
   return employeeBonus;
 }
 
-
-// console.log(calculateIndividualEmployeeBonus(employees));
-// console.log(calculateIndividualEmployeeBonus(employees[1]));
-// console.log(calculateIndividualEmployeeBonus(employees[2]));
-// console.log(calculateIndividualEmployeeBonus(employees[3]));
-// console.log(calculateIndividualEmployeeBonus(employees[4]));
-
-
 for(let people of employees ){
-  console.log(calculateIndividualEmployeeBonus(people));
+  console.log(people.name, calculateIndividualEmployeeBonus(people));
 };
 
